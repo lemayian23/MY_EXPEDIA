@@ -1,7 +1,7 @@
 ## 🎓 Academic Context
 
-This project began as a coursework assignment but has been completely 
-reimplemented and enhanced by [Your Name]. The codebase represents 
+This project began as a coursework for Software Engineering Laboratory at Technical University of Kenya mentored by my Lecturer Richard Akello and has been completely 
+reimplemented and enhanced by Denis Lemayian Kirionki. The codebase represents 
 my individual work and improvements.
 
 ### Original Framework Provided:
