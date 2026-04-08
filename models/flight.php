@@ -28,6 +28,7 @@ class flight extends db {
     }
     
     function createBooking($passengerName, $passengerEmail, $passengerPhone, $passportNo, $flightId, $seatNumber) {
+<<<<<<< HEAD
     try {
         $conn = $this->connect();
         $conn->beginTransaction();
@@ -51,4 +52,35 @@ class flight extends db {
     }
 }
 }
+=======
+        try {
+            $conn = $this->connect();
+            
+            // First, create passenger
+            $sqlPassenger = "INSERT INTO passenger (Name, Email, Phone, PassportNo) 
+                            VALUES (?, ?, ?, ?)";
+            $stmt = $conn->prepare($sqlPassenger);
+            $stmt->execute([$passengerName, $passengerEmail, $passengerPhone, $passportNo]);
+            $passengerId = $conn->lastInsertId();
+            
+            // Then create booking
+            $sqlBooking = "CALL sp_createBooking({$passengerId}, {$flightId}, '{$seatNumber}', 'Confirmed')";
+            $stmt = $conn->prepare($sqlBooking);
+            $stmt->execute();
+            
+            return [
+                "status" => "success",
+                "message" => "Booking confirmed successfully!",
+                "booking_id" => $conn->lastInsertId()
+            ];
+            
+        } catch (PDOException $e) {
+            return [
+                "status" => "error",
+                "message" => $e->getMessage()
+            ];
+        }
+    }
+}
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
 ?>

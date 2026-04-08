@@ -10,19 +10,35 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
         .navbar {
             background: rgba(0,0,0,0.3) !important;
             backdrop-filter: blur(10px);
         }
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
         .hero {
             padding: 100px 0 60px 0;
             text-align: center;
             color: white;
         }
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
         }
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
         .search-card {
             background: white;
             border-radius: 20px;
@@ -30,6 +46,10 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             margin-bottom: 40px;
         }
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
         .flight-card {
             background: white;
             border-radius: 15px;
@@ -38,20 +58,36 @@
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
         }
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
         .flight-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
         .airline-name {
             color: #667eea;
             font-weight: bold;
             font-size: 1.2rem;
         }
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
         .price {
             font-size: 1.8rem;
             font-weight: bold;
             color: #28a745;
         }
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
         .btn-book {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -60,17 +96,33 @@
             border-radius: 25px;
             font-weight: bold;
         }
+<<<<<<< HEAD
         .btn-book:hover {
             transform: scale(1.05);
         }
         .modal-content {
             border-radius: 20px;
         }
+=======
+        
+        .btn-book:hover {
+            transform: scale(1.05);
+        }
+        
+        .modal-content {
+            border-radius: 20px;
+        }
+        
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
         .loading {
             text-align: center;
             padding: 40px;
             display: none;
         }
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
         .spinner-border {
             width: 3rem;
             height: 3rem;
@@ -188,16 +240,29 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+<<<<<<< HEAD
         // Load cities from your backend
+=======
+        let currentFlights = [];
+        
+        // Load cities
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
         async function loadCities() {
             try {
                 const response = await fetch('controllers/cityoperations.php?filtercities&countryid=0');
                 const cities = await response.json();
+<<<<<<< HEAD
                 const originSelect = document.getElementById('origin');
                 const destSelect = document.getElementById('destination');
                 // Clear existing options except the first placeholder
                 originSelect.innerHTML = '<option value="">Select origin city</option>';
                 destSelect.innerHTML = '<option value="">Select destination city</option>';
+=======
+                
+                const originSelect = document.getElementById('origin');
+                const destSelect = document.getElementById('destination');
+                
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
                 cities.forEach(city => {
                     originSelect.innerHTML += `<option value="${city.cityid}">${city.cityname}</option>`;
                     destSelect.innerHTML += `<option value="${city.cityid}">${city.cityname}</option>`;
@@ -206,6 +271,7 @@
                 console.error('Error loading cities:', error);
             }
         }
+<<<<<<< HEAD
 
         // Set minimum date to today
         document.getElementById('departureDate').min = new Date().toISOString().split('T')[0];
@@ -263,21 +329,94 @@
                 const price = flight.price || Math.floor(Math.random() * 20000) + 10000;
                 const availableSeats = flight.AvailableSeats !== undefined ? flight.AvailableSeats : 50;
 
+=======
+        
+        // Set minimum date
+        document.getElementById('departureDate').min = new Date().toISOString().split('T')[0];
+        
+        // Search flights
+        document.getElementById('searchForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const origin = document.getElementById('origin').value;
+            const destination = document.getElementById('destination').value;
+            const date = document.getElementById('departureDate').value;
+            
+            if (origin === destination) {
+                alert('Origin and destination cannot be the same!');
+                return;
+            }
+            
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('results').style.display = 'none';
+            
+            // For now, show mock data since flights table might be empty
+            setTimeout(() => {
+                const mockFlights = [
+                    {
+                        FlightID: 1,
+                        FlightNumber: 'KQ202',
+                        OriginCity: 'Nairobi',
+                        DestinationCity: 'Mombasa',
+                        DepartureTime: '2024-04-15 08:00:00',
+                        ArrivalTime: '2024-04-15 09:30:00',
+                        AircraftModel: 'Boeing 737',
+                        AvailableSeats: 45,
+                        price: 12000
+                    },
+                    {
+                        FlightID: 2,
+                        FlightNumber: 'ET308',
+                        OriginCity: 'Nairobi',
+                        DestinationCity: 'Addis Ababa',
+                        DepartureTime: '2024-04-15 10:00:00',
+                        ArrivalTime: '2024-04-15 12:00:00',
+                        AircraftModel: 'Boeing 787',
+                        AvailableSeats: 32,
+                        price: 25000
+                    }
+                ];
+                
+                displayFlights(mockFlights);
+                document.getElementById('loading').style.display = 'none';
+            }, 1000);
+        });
+        
+        function displayFlights(flights) {
+            const container = document.getElementById('flightResults');
+            container.innerHTML = '';
+            
+            flights.forEach(flight => {
+                const departureTime = new Date(flight.DepartureTime).toLocaleTimeString();
+                const arrivalTime = new Date(flight.ArrivalTime).toLocaleTimeString();
+                
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
                 container.innerHTML += `
                     <div class="flight-card">
                         <div class="row align-items-center">
                             <div class="col-md-5">
+<<<<<<< HEAD
                                 <div class="airline-name">${escapeHtml(flight.FlightNumber)}</div>
                                 <div>${escapeHtml(flight.OriginCity || '?')} → ${escapeHtml(flight.DestinationCity || '?')}</div>
                                 <small class="text-muted">${escapeHtml(flight.AircraftModel || 'Boeing 737')}</small>
+=======
+                                <div class="airline-name">${flight.FlightNumber}</div>
+                                <div>${flight.OriginCity} → ${flight.DestinationCity}</div>
+                                <small class="text-muted">${flight.AircraftModel}</small>
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
                             </div>
                             <div class="col-md-3">
                                 <div>🛫 ${departureTime}</div>
                                 <div>🛬 ${arrivalTime}</div>
                             </div>
                             <div class="col-md-2">
+<<<<<<< HEAD
                                 <div class="price">KSh ${price.toLocaleString()}</div>
                                 <small>${availableSeats} seats left</small>
+=======
+                                <div class="price">KSh ${flight.price.toLocaleString()}</div>
+                                <small>${flight.AvailableSeats} seats left</small>
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
                             </div>
                             <div class="col-md-2">
                                 <button class="btn btn-book" onclick="openBookingModal(${flight.FlightID})">
@@ -288,6 +427,7 @@
                     </div>
                 `;
             });
+<<<<<<< HEAD
             document.getElementById('results').style.display = 'block';
         }
 
@@ -312,6 +452,20 @@
         // Handle booking form submission
         document.getElementById('bookingForm').addEventListener('submit', async (e) => {
             e.preventDefault();
+=======
+            
+            document.getElementById('results').style.display = 'block';
+        }
+        
+        function openBookingModal(flightId) {
+            document.getElementById('selectedFlightId').value = flightId;
+            new bootstrap.Modal(document.getElementById('bookingModal')).show();
+        }
+        
+        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
             const formData = new FormData();
             formData.append('createbooking', '1');
             formData.append('flightId', document.getElementById('selectedFlightId').value);
@@ -320,13 +474,18 @@
             formData.append('passengerPhone', document.getElementById('passengerPhone').value);
             formData.append('passportNo', document.getElementById('passportNo').value);
             formData.append('seatNumber', document.getElementById('seatNumber').value);
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
             try {
                 const response = await fetch('controllers/flightoperations.php', {
                     method: 'POST',
                     body: formData
                 });
                 const result = await response.json();
+<<<<<<< HEAD
                 if (result.status === 'success') {
                     alert('✓ Booking confirmed successfully!');
                     // Optionally reset form and close modal
@@ -345,6 +504,24 @@
             alert('Booking history feature coming soon!');
         }
 
+=======
+                
+                if(result.status === 'success') {
+                    alert('✓ Booking confirmed successfully!');
+                    location.reload();
+                } else {
+                    alert('Error: ' + result.message);
+                }
+            } catch (error) {
+                alert('Booking failed. Please try again.');
+            }
+        });
+        
+        function viewBookings() {
+            alert('Booking history feature coming soon!');
+        }
+        
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
         // Initialize
         loadCities();
     </script>

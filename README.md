@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MY_EXPEDIA - Flight Booking System
 
 A fully functional flight booking web application inspired by Expedia, built with PHP, MySQL, and Bootstrap. Developed as a Software Engineering Laboratory project at the Technical University of Kenya and enhanced with complete CRUD functionality, stored procedures, and a modern UI.
@@ -23,3 +24,19 @@ A fully functional flight booking web application inspired by Expedia, built wit
 | AJAX | Fetch API for asynchronous search & booking |
 
 ## Project Structure
+=======
+## 🎓 Academic Context
+
+This project began as a coursework for Software Engineering Laboratory at Technical University of Kenya mentored by my Lecturer Richard Akello and has been completely 
+reimplemented and enhanced by Denis Lemayian Kirionki. The codebase represents 
+my individual work and improvements.
+
+### Original Framework Provided:
+- Initial project requirements
+- Basic structure guidance
+
+### My Complete Implementation:
+- Rewrote all database stored procedures
+- Implemented full CRUD functionality  
+- Enhanced UI/UX design
+>>>>>>> 40cf8da1660474ad4f4f5e74a05596163319f0b0
